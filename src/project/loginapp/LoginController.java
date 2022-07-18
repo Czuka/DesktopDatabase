@@ -65,27 +65,31 @@ public class LoginController implements Initializable {
         try{
             System.out.println("Action eve"); //
 
-            //zablokować brak wartości w comboboxie
+            // brak wartości w comboboxie
+            if (this.cbAcount != null) {
+                if (this.loginModel.isLogin(this.tfUsername.getText(), this.tfPassword.getText(), ((AcountEnum) this.cbAcount.getValue()).toString())) {
+                    System.out.println("logowanie przeszło"); //
+                    Stage stage = (Stage) this.btnLogin.getScene().getWindow();
+                    stage.close();
 
-            if (this.loginModel.isLogin(this.tfUsername.getText(), this.tfPassword.getText(), ((AcountEnum) this.cbAcount.getValue()).toString())) {
-                System.out.println("logowanie przeszło"); //
-                Stage stage = (Stage)this.btnLogin.getScene().getWindow();
-                stage.close();
-
-                switch (((AcountEnum) this.cbAcount.getValue()).toString()){
-                    case "Admin":
-                        adminLogin();
-                        break;
-                    case "User":
-                        userLogin();
-                        break;
+                    switch (((AcountEnum) this.cbAcount.getValue()).toString()) {
+                        case "Admin":
+                            adminLogin();
+                            break;
+                        case "User":
+                            userLogin();
+                            break;
+                    }
+                } else {
+                    this.loginStatus.setText("Wrong Creditials");
                 }
             }else{
-                this.loginStatus.setText("Wrong Creditials");
+                this.loginStatus.setText("Pick Acount type");
             }
         }catch (Exception localExeption) {
             localExeption.printStackTrace();
         }
+
     }
 
     private void userLogin() {
