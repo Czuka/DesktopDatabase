@@ -1,52 +1,51 @@
 package project.adminP;
 
-import javafx.beans.Observable;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.bdUtil.DbConnection;
-
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.sql.ResultSet;
 
-
-
 public class AdminController implements Initializable {
 
+    @FXML private TextField tfId;
     @FXML private TextField tfFirstName;
     @FXML private TextField tfLastName;
     @FXML private TextField tfEmail;
-    @FXML private TableView<UserData> UserTable;
+    @FXML private DatePicker dpDateOfBirth;
+
+    @FXML private TableView<UserData> userTable;
     @FXML private TableColumn<UserData, String> idColumn;
     @FXML private TableColumn<UserData, String> firstNameColumn;
     @FXML private TableColumn<UserData, String> lastNameColumn;
     @FXML private TableColumn<UserData, String> emailColumn;
     @FXML private TableColumn<UserData, String> doBColumn;
 
-
     private DbConnection dc;
     private ObservableList<UserData> data ;
-    private String sqlStart ="SELRCT * FROM USER";
-
+    private String sqlStart ="SELECT * FROM USER";
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.dc = new DbConnection();
+        System.out.println("initialize Admin controler");
     }
 
-    @FXML
-    private void loadUserData(ActionEvent event){
+  @FXML
+    private void loadUserData() {
         try{
             Connection conn = DbConnection.getConnection();
             this.data = FXCollections.observableArrayList();
@@ -68,11 +67,43 @@ public class AdminController implements Initializable {
         this.emailColumn.setCellValueFactory(new PropertyValueFactory<UserData,String>("email"));
         this.doBColumn.setCellValueFactory(new PropertyValueFactory<UserData,String>("DoB"));
 
-
+        this.userTable.setItems(null);
+        this.userTable.setItems(this.data);
     }
 
+    @FXML
+    private void addUser(ActionEvent Event){
+        String sqlInsert = "INSERT INTO USER(US_ID,US_NAME,US_SNAME,US_EMAIL,US_DOB) VALUES (?,?,?,?,?);";
+        try{
+           Connection conn = DbConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sqlInsert);
+            stmt.setString(1,this.tfId.getText());
+            stmt.setString(2,this.tfFirstName.getText());
+            stmt.setString(3,this.tfLastName.getText());
+            stmt.setString(4,this.tfEmail.getText());
+            stmt.setString(5,this.dpDateOfBirth.getEditor().getText());
+
+            stmt.execute();
+            conn.close();
+
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            System.err.println("Error:" + ex);
+        }finally {
+            loadUserData();
+        }
+    }
+
+    @FXML
+    private void clearFields(ActionEvent event){
+        this.idColumn.setText("");
+        this.tfFirstName.setText("");
+        this.tfLastName.setText("");
+        this.tfEmail.setText("");
+        this.dpDateOfBirth.setValue(null);
 
 
+    }
 
 
 

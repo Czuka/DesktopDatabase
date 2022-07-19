@@ -3,14 +3,14 @@ package project.adminP;
 import java.io.*;
 
 public class IdController {
-    private int idInt;
+/*    private int idInt;
 
 
     public int setIdInt() {
         try{
             BufferedReader reader = new BufferedReader(new FileReader("IdContainer.txt"));
             if (Integer.valueOf(reader.readLine()) != null) {
-                this.idInt = Integer.valueOf(reader.readLine())+1;
+                this.idInt = Integer.valueOf(reader.readLine());
             }else {
                 //dodać ściągnięcie id z bazy
             }
@@ -20,6 +20,7 @@ public class IdController {
         finally {
             System.out.println("setIdInt ="+ this.idInt +" .");
             return this.idInt;
+
         }
     }
 
@@ -43,10 +44,11 @@ public class IdController {
         }
     }
 
-    public IdController() {
+    public int IdController() {
         setIdInt();
-        saveID();
+        getIdInt();
 
-    }
+        return this.idInt;
+    }*/
 }
 

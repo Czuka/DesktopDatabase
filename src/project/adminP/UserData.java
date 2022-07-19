@@ -25,15 +25,12 @@ public class UserData  {
     public String getIdSend() {
         return idSend.get();
     }
-
     public StringProperty idSendProperty() {
         return idSend;
     }
-
     public void setIdSend(String idSend) {
         this.idSend.set(idSend);
     }
-
     public String getFirstName() {
         return firstName.get();
     }

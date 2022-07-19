@@ -23,7 +23,7 @@
                      <children>
                         <HBox layoutX="268.0" layoutY="2.0" prefHeight="692.0" prefWidth="1007.0">
                            <children>
-                              <TableView prefHeight="692.0" prefWidth="1010.0">
+                              <TableView fx:id="userTable" prefHeight="655.0" prefWidth="1007.0">
                                 <columns>
                                   <TableColumn fx:id="idColumn" prefWidth="59.0" text="ID" />
                                   <TableColumn fx:id="firstNameColumn" prefWidth="186.0" text="First name" />
@@ -41,6 +41,11 @@
                                     <Insets left="50.0" />
                                  </padding>
                               </Label>
+                              <TextField fx:id="tfId" layoutX="35.0" layoutY="46.0" promptText="id">
+                                 <VBox.margin>
+                                    <Insets left="15.0" right="15.0" />
+                                 </VBox.margin>
+                              </TextField>
                               <TextField fx:id="tfFirstName" promptText="First name">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
@@ -56,22 +61,22 @@
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <DatePicker prefHeight="25.0" prefWidth="246.0">
+                              <DatePicker fx:id="dpDateOfBirth" prefHeight="25.0" prefWidth="246.0" promptText="data of birth">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="Add entry">
+                              <Button mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="212.0" text="Add entry">
                                  <VBox.margin>
                                     <Insets left="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="Clear Form">
+                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="212.0" text="Clear Form">
                                  <VBox.margin>
                                     <Insets left="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="Load data">
+                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" onAction="#loadUserData" prefHeight="25.0" prefWidth="212.0" text="Load data">
                                  <VBox.margin>
                                     <Insets left="15.0" />
                                  </VBox.margin>
