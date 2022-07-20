@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import project.adminP.IdBananas;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +46,9 @@ public class LoginController implements Initializable {
         System.out.println("restart buton");
         Stage stage = (Stage)this.tbnRestart.getScene().getWindow();
         stage.close();
+
+        String testy = String.valueOf(new IdBananas().bananasFuction("pliczek"));
+        System.out.println(testy);
 
         try {
             Stage restartStage = new Stage();

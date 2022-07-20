@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import project.adminP.IdBananas;
 
 public class LoginApp extends Application {
     @Override
@@ -17,6 +18,8 @@ public class LoginApp extends Application {
         //primaryStage.;
         primaryStage.show();
 
+        String testy = String.valueOf(new IdBananas().bananasFuction("pliczek"));
+        System.out.println(testy);
     }
 
     public static void main(String[] args) {

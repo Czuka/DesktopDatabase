@@ -20,12 +20,11 @@ import java.sql.ResultSet;
 
 public class AdminController implements Initializable {
 
-    @FXML private TextField tfId;
+    // elementy pierwszej zakładki User
     @FXML private TextField tfFirstName;
     @FXML private TextField tfLastName;
     @FXML private TextField tfEmail;
     @FXML private DatePicker dpDateOfBirth;
-
     @FXML private TableView<UserData> userTable;
     @FXML private TableColumn<UserData, String> idColumn;
     @FXML private TableColumn<UserData, String> firstNameColumn;
@@ -33,15 +32,18 @@ public class AdminController implements Initializable {
     @FXML private TableColumn<UserData, String> emailColumn;
     @FXML private TableColumn<UserData, String> doBColumn;
 
+    //elementy zakładki Attraction
+
+
     private DbConnection dc;
     private ObservableList<UserData> data ;
     private String sqlStart ="SELECT * FROM USER";
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.dc = new DbConnection();
         System.out.println("initialize Admin controler");
+        loadUserData();
     }
 
   @FXML
@@ -77,7 +79,9 @@ public class AdminController implements Initializable {
         try{
            Connection conn = DbConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sqlInsert);
-            stmt.setString(1,this.tfId.getText());
+
+            int tempID = new IdBananas().bananasFuction("userID");
+            stmt.setString(1,String.valueOf(tempID));
             stmt.setString(2,this.tfFirstName.getText());
             stmt.setString(3,this.tfLastName.getText());
             stmt.setString(4,this.tfEmail.getText());
@@ -101,8 +105,6 @@ public class AdminController implements Initializable {
         this.tfLastName.setText("");
         this.tfEmail.setText("");
         this.dpDateOfBirth.setValue(null);
-
-
     }
 
 
