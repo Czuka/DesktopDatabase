@@ -28,9 +28,9 @@
                                 <columns>
                                   <TableColumn fx:id="idColumn" prefWidth="67.0" text="ID" />
                                   <TableColumn fx:id="firstNameColumn" prefWidth="178.0" text="First name" />
-                                    <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="225.0" text="Last name" />
-                                    <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="362.0" text="Email" />
-                                    <TableColumn fx:id="doBColumn" minWidth="0.0" prefWidth="165.0" text="Date of birth" />
+                                    <TableColumn fx:id="lastNameColumn" prefWidth="225.0" text="Last name" />
+                                    <TableColumn fx:id="emailColumn" prefWidth="362.0" text="Email" />
+                                    <TableColumn fx:id="doBColumn" prefWidth="165.0" text="Date of birth" />
                                 </columns>
                               </TableView>
                            </children>
@@ -92,12 +92,12 @@
                      <children>
                         <HBox layoutX="268.0" layoutY="2.0" prefHeight="692.0" prefWidth="1007.0">
                            <children>
-                              <TableView fx:id="userTable1" prefHeight="655.0" prefWidth="1007.0">
+                              <TableView fx:id="attractionTable" prefHeight="655.0" prefWidth="1007.0">
                                  <columns>
-                                    <TableColumn fx:id="idColumn1" prefWidth="67.0" text="ID" />
-                                    <TableColumn fx:id="firstNameColumn1" prefWidth="178.0" text="Attraction" />
-                                    <TableColumn fx:id="lastNameColumn1" minWidth="0.0" prefWidth="225.0" text="Location" />
-                                    <TableColumn fx:id="emailColumn1" minWidth="0.0" prefWidth="362.0" text="Description" />
+                                    <TableColumn fx:id="columnAttractionId" prefWidth="43.0" resizable="false" text="ID" />
+                                    <TableColumn fx:id="columnAttractionName" prefWidth="202.0" text="Attraction" />
+                                    <TableColumn fx:id="columnAttractionLocation" prefWidth="225.0" text="Location" />
+                                    <TableColumn fx:id="columnAttractionDescription" prefWidth="512.0" text="Description" />
                                  </columns>
                               </TableView>
                            </children>
@@ -112,32 +112,32 @@
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField promptText="attraction">
+                              <TextField fx:id="tfAtractionName" promptText="attraction">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField layoutX="10.0" layoutY="33.0" promptText="Location">
+                              <TextField fx:id="tfAtractionLocation" layoutX="10.0" layoutY="33.0" promptText="Location">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextArea prefHeight="200.0" prefWidth="200.0" promptText="description">
+                              <TextArea fx:id="taAttractionDescription" prefHeight="200.0" prefWidth="200.0" promptText="description">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextArea>
-                              <Button mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="212.0" text="Add entry">
+                              <Button mnemonicParsing="false" onAction="#addAttraction" prefHeight="25.0" prefWidth="212.0" text="Add entry">
                                  <VBox.margin>
                                     <Insets left="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="212.0" text="Clear Form">
+                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="Clear Form">
                                  <VBox.margin>
                                     <Insets left="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" onAction="#loadUserData" prefHeight="25.0" prefWidth="212.0" text="Load data">
+                              <Button layoutX="35.0" layoutY="158.0" mnemonicParsing="false" onAction="#loadAttractionData" prefHeight="25.0" prefWidth="212.0" text="Load data">
                                  <VBox.margin>
                                     <Insets left="15.0" />
                                  </VBox.margin>
